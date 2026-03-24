@@ -78,35 +78,6 @@ const testimonials = [
   },
 ];
 
-const pricingTiers = [
-  {
-    name: "Free",
-    price: "$0",
-    period: "forever",
-    description: "Perfect for getting started",
-    features: ["Unlimited notes", "Split preview", "Basic shortcuts", "Local storage", "Export to .md"],
-    cta: "Start Free",
-    highlighted: false,
-  },
-  {
-    name: "Pro",
-    price: "$9",
-    period: "/month",
-    description: "For serious writers",
-    features: ["Everything in Free", "Cloud sync", "Custom themes", "Priority support", "Advanced shortcuts", "Version history"],
-    cta: "Upgrade to Pro",
-    highlighted: true,
-  },
-  {
-    name: "Team",
-    price: "$24",
-    period: "/month",
-    description: "Collaborate beautifully",
-    features: ["Everything in Pro", "Shared workspaces", "Team management", "API access", "SSO integration", "Dedicated support"],
-    cta: "Contact Sales",
-    highlighted: false,
-  },
-];
 
 const Index = () => {
   return (
