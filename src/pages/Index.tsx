@@ -231,10 +231,10 @@ const Index = () => {
                 key={f.title}
                 variants={fadeUp}
                 custom={i}
-                className="flex gap-4 items-start group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-muted/60 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors duration-300">
+                <div className="flex gap-4 items-start group cursor-default">
+                <div className="w-10 h-10 rounded-xl bg-muted/60 flex items-center justify-center shrink-0 group-hover:bg-accent/15 group-hover:scale-110 transition-all duration-300">
                   <f.icon className="h-[18px] w-[18px] text-foreground/60 group-hover:text-accent transition-colors duration-300" />
+                </div>
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold mb-1">{f.title}</h3>
