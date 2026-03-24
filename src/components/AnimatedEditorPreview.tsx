@@ -114,16 +114,14 @@ const RenderedLine = ({ type, text, num, delay, cycle }: { type: string; text: s
 
 export const AnimatedEditorPreview = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px" });
   const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
-    if (!isInView) return;
     const interval = setInterval(() => {
       setCycle((c) => c + 1);
     }, TOTAL_DURATION + PAUSE_BEFORE_RESET);
     return () => clearInterval(interval);
-  }, [isInView]);
+  }, []);
 
   return (
     <div ref={ref}>
@@ -141,13 +139,13 @@ export const AnimatedEditorPreview = () => {
           <div className="w-[54px]" />
         </div>
         {/* Split panes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border/50">
-          <div className="p-6 md:p-7 font-mono text-[12px] md:text-[13px] leading-[1.9] min-h-[280px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border/50 h-[320px]">
+          <div className="p-6 md:p-7 font-mono text-[12px] md:text-[13px] leading-[1.9] h-full overflow-hidden">
             {markdownLines.map((line, i) => (
               <TypingLine key={`${cycle}-${i}`} text={line.text} startDelay={line.delay} cycle={cycle} />
             ))}
           </div>
-          <div className="p-6 md:p-7 text-[12px] md:text-[13px] leading-[1.9] min-h-[280px] hidden md:block">
+          <div className="p-6 md:p-7 text-[12px] md:text-[13px] leading-[1.9] h-full overflow-hidden hidden md:block">
             {renderedContent.map((item, i) => (
               <RenderedLine key={`${cycle}-${i}`} type={item.type} text={item.text} num={item.num} delay={item.delay} cycle={cycle} />
             ))}
