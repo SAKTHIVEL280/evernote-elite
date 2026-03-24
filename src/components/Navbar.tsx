@@ -28,8 +28,8 @@ export function Navbar() {
       <nav
         className={`w-full max-w-3xl transition-all duration-500 rounded-2xl border ${
           scrolled
-            ? "bg-background/70 backdrop-blur-2xl border-border/60 shadow-lg shadow-foreground/[0.03]"
-            : "bg-background/40 backdrop-blur-xl border-border/30"
+            ? "bg-background/80 backdrop-blur-2xl border-border shadow-[0_8px_32px_-8px] shadow-foreground/[0.08]"
+            : "bg-background/60 backdrop-blur-xl border-border/60 shadow-[0_4px_20px_-6px] shadow-foreground/[0.05]"
         }`}
       >
         <div className="px-5 h-14 flex items-center justify-between">
