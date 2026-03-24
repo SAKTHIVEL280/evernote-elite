@@ -27,7 +27,7 @@ const timeline = [
 ];
 
 const About = () => {
-  usePageSEO({ title: "About", description: "PMNT was built by Sakthivel with Lovable — a solo dev's quest for the perfect markdown note-taking app.", path: "/about" });
+  usePageSEO({ title: "About", description: "PMNT was built by Sakthivel with Lovable. A solo dev's quest for the perfect markdown note-taking app.", path: "/about" });
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
