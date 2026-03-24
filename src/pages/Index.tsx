@@ -406,7 +406,7 @@ const Index = () => {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="px-6 py-16 md:py-24 border-t border-border/40">
+      <section className="px-6 py-10 md:py-14 border-t border-border/40">
         <motion.div
           initial="hidden"
           whileInView="visible"
