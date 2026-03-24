@@ -117,7 +117,7 @@ Start writing your markdown here. Use the toolbar above or keyboard shortcuts:
 3. Export as .md file
 4. Zen mode for distraction-free writing
 
-> "The scariest moment is always just before you start." — Stephen King
+> "The scariest moment is always just before you start." - Stephen King
 
 Happy writing! ✍️
 `;
