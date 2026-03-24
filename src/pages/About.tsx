@@ -125,10 +125,10 @@ const About = () => {
               <p className="text-sm text-muted-foreground mb-4">Solo Developer & Creator</p>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
                 I was frustrated with bloated note-taking apps that did everything except let me write in peace. 
-                So I built PMNT — a clean, privacy-first markdown editor — entirely with the help of{" "}
+                So I built PMNT, a clean, privacy-first markdown editor, entirely with the help of{" "}
                 <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
                   Lovable
-                </a>, an AI-powered development platform. No team, no funding — just an idea and the right tool to bring it to life.
+                </a>, an AI-powered development platform. No team, no funding. Just an idea and the right tool to bring it to life.
               </p>
               <div className="flex flex-wrap gap-3 mt-5 justify-center md:justify-start">
                 <a
