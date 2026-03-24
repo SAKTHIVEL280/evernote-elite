@@ -115,18 +115,20 @@ const Index = () => {
             {/* Overlay for text readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-foreground/10" />
 
-            {/* Background watermark text */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-[1]">
-              <span className="font-serif text-[4rem] md:text-[7rem] lg:text-[9rem] font-bold text-background/[0.07] tracking-[-0.03em] whitespace-nowrap leading-none">
-                Free & Open Source
-              </span>
-            </div>
-
             {/* Content overlaid on image */}
             <motion.div
               style={{ y: heroY, opacity: heroOpacity }}
               className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20 md:py-28 min-h-[420px] md:min-h-[520px] lg:min-h-[580px]"
             >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-background/30 bg-background/10 backdrop-blur-sm mb-6"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-background" />
+                <span className="text-xs font-medium text-background tracking-wide">Free & Open Source</span>
+              </motion.div>
 
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
