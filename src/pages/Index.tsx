@@ -126,13 +126,13 @@ const Index = () => {
                 className="flex gap-3"
               >
                 <Link to="/editor">
-                  <Button size="lg" className="bg-white text-black hover:bg-white/90 px-7 h-12 text-sm font-medium rounded-xl group">
+                  <Button size="lg" className="bg-white text-black hover:bg-white/90 hover:scale-[1.03] active:scale-[0.98] px-7 h-12 text-sm font-medium rounded-xl group transition-all duration-200">
                     Start writing
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Button>
                 </Link>
                 <Link to="/tutorial">
-                  <Button size="lg" variant="outline" className="border-white/50 bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 px-7 h-12 text-sm font-medium rounded-xl">
+                  <Button size="lg" variant="outline" className="border-white/50 bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 hover:scale-[1.03] active:scale-[0.98] px-7 h-12 text-sm font-medium rounded-xl transition-all duration-200">
                     Learn more
                   </Button>
                 </Link>
