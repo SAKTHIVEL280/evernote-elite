@@ -102,10 +102,10 @@ const Index = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-[-0.03em] mb-5 text-white max-w-3xl"
+                className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-[-0.03em] mb-5 text-white max-w-4xl"
               >
                 Your thoughts,
-                <br />
+                <br className="md:hidden" />
                 beautifully <span className="italic">organized</span>.
               </motion.h1>
 
