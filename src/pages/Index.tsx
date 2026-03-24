@@ -171,7 +171,7 @@ const Index = () => {
       </section>
 
       {/* ═══ FEATURE CARDS — 3 columns with subtle colored backgrounds ═══ */}
-      <section className="px-6 pb-20 md:pb-28">
+      <section className="px-6 pb-10 md:pb-14">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial="hidden"
