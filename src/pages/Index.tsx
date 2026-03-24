@@ -96,63 +96,69 @@ const Index = () => {
       <Navbar />
 
       {/* ═══ HERO ═══ */}
-      <section ref={heroRef} className="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
-        {/* Full background image, heavily lightened */}
-        <img
-          src={heroImg}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-[0.15]"
-        />
-        {/* Light wash overlay */}
-        <div className="absolute inset-0 bg-background/40" />
-
+      <section ref={heroRef} className="relative pt-20 px-6 overflow-hidden">
         <motion.div
-          style={{ y: heroY, opacity: heroOpacity }}
-          className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center py-20"
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-6xl mx-auto"
         >
-          {/* Small icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8"
-          >
-            <Pen className="w-6 h-6 text-foreground/70" />
-          </motion.div>
+          <div className="relative rounded-3xl overflow-hidden min-h-[480px] md:min-h-[560px] lg:min-h-[620px]">
+            {/* Full background image */}
+            <img
+              src={heroImg}
+              alt="PMNT workspace"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Dark gradient overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.05] tracking-[-0.03em] mb-6 text-foreground"
-          >
-            Your thoughts,
-            <br />
-            beautifully <span className="italic">organized</span>.
-          </motion.h1>
+            {/* Content overlaid on image */}
+            <motion.div
+              style={{ y: heroY, opacity: heroOpacity }}
+              className="relative z-10 flex flex-col items-start justify-end px-8 md:px-14 pb-12 md:pb-16 min-h-[480px] md:min-h-[560px] lg:min-h-[620px]"
+            >
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.05] tracking-[-0.03em] mb-4 text-white max-w-4xl"
+              >
+                Your thoughts,
+                <br />
+                beautifully <span className="italic">organized</span>.
+              </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45 }}
-            className="text-sm md:text-base text-muted-foreground max-w-md mb-10 leading-relaxed"
-          >
-            A premium markdown editor designed for clarity, crafted for writers
-            who value focus and elegance.
-          </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.45 }}
+                className="text-sm md:text-base text-white/75 max-w-md mb-8 leading-relaxed"
+              >
+                A premium markdown editor designed for clarity, crafted for writers
+                who value focus and elegance.
+              </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55 }}
-          >
-            <Link to="/editor">
-              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-8 h-12 text-sm font-medium rounded-full shadow-lg group">
-                Start writing
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-              </Button>
-            </Link>
-          </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.55 }}
+                className="flex gap-3"
+              >
+                <Link to="/editor">
+                  <Button size="lg" className="bg-white text-black hover:bg-white/90 px-7 h-11 text-sm font-medium rounded-full group">
+                    Start writing
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                  </Button>
+                </Link>
+                <Link to="/tutorial">
+                  <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 px-7 h-11 text-sm font-medium rounded-full">
+                    Learn more
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
       </section>
 
