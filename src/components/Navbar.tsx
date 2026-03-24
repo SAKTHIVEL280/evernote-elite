@@ -6,6 +6,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
   { to: "/", label: "Home" },
+  { to: "/dashboard", label: "Dashboard" },
   { to: "/editor", label: "Editor" },
   { to: "/tutorial", label: "Tutorial" },
   { to: "/about", label: "About" },
