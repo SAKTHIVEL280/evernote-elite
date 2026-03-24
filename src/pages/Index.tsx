@@ -9,6 +9,7 @@ import {
   ArrowRight, Star, Pen, Shield, Tag, Pin, Archive,
   Command, FileText, Sparkles,
 } from "lucide-react";
+import heroImg from "@/assets/hero-workspace.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -24,67 +25,40 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.08 } },
 };
 
-const features = [
+const featureCards = [
   {
     icon: Split,
-    title: "Live Split Preview",
-    description: "Write markdown on the left, see it rendered beautifully on the right.",
-  },
-  {
-    icon: Keyboard,
-    title: "Keyboard-First",
-    description: "Ctrl+B, Ctrl+I, and dozens more. Your fingers never leave the keyboard.",
-  },
-  {
-    icon: FolderOpen,
-    title: "Folders & Organization",
-    description: "Drag-and-drop notes into folders. Rename, nest, and reorganize effortlessly.",
-  },
-  {
-    icon: Tag,
-    title: "Tags & Filters",
-    description: "Color-coded tags to categorize. Filter your sidebar instantly.",
-  },
-  {
-    icon: Pin,
-    title: "Pin & Favorites",
-    description: "Pin important notes to the top. Never lose track of what matters.",
+    title: "Live split preview",
+    description: "Write markdown on the left, see it rendered beautifully on the right — in real time.",
+    accent: "from-accent/10 to-accent/5",
+    border: "border-accent/20",
   },
   {
     icon: Command,
-    title: "Command Palette",
-    description: "Ctrl+K to search notes, switch folders, and trigger any action.",
-  },
-  {
-    icon: Archive,
-    title: "Trash & Restore",
-    description: "Soft-delete with a recoverable trash bin. Nothing is lost forever.",
-  },
-  {
-    icon: Download,
-    title: "Export Anywhere",
-    description: "Download as .md, .html, or print to PDF. Your data is always yours.",
-  },
-  {
-    icon: Zap,
-    title: "Zen Mode",
-    description: "Distraction-free fullscreen. Just you and a beautiful writing canvas.",
-  },
-  {
-    icon: Pen,
-    title: "Rich Formatting",
-    description: "Tables, code blocks, task lists, blockquotes — full GFM support.",
-  },
-  {
-    icon: FileText,
-    title: "Templates",
-    description: "Meeting notes, journal, project plan — start from pre-built templates.",
+    title: "Command palette",
+    description: "Ctrl+K to search notes, switch folders, and trigger any action instantly.",
+    accent: "from-primary/10 to-primary/5",
+    border: "border-primary/20",
   },
   {
     icon: Shield,
-    title: "Privacy-First",
-    description: "Everything lives in your browser. No accounts, no cloud, no tracking.",
+    title: "100% private",
+    description: "No accounts, no cloud, no tracking. Everything lives in your browser.",
+    accent: "from-accent/8 to-primary/5",
+    border: "border-accent/15",
   },
+];
+
+const allFeatures = [
+  { icon: Keyboard, title: "Keyboard-first", desc: "Ctrl+B, Ctrl+I, and dozens more shortcuts." },
+  { icon: FolderOpen, title: "Folders & organization", desc: "Drag-and-drop into nested folders." },
+  { icon: Tag, title: "Tags & filters", desc: "Color-coded tags with instant filtering." },
+  { icon: Pin, title: "Pin & favorites", desc: "Pin notes to the top of your sidebar." },
+  { icon: Archive, title: "Trash & restore", desc: "Soft-delete with recoverable trash bin." },
+  { icon: FileText, title: "Templates", desc: "Meeting notes, journal, project plans." },
+  { icon: Download, title: "Export anywhere", desc: "Download as .md, .html, or print to PDF." },
+  { icon: Zap, title: "Zen mode", desc: "Distraction-free fullscreen writing." },
+  { icon: Pen, title: "Rich formatting", desc: "Tables, code blocks, task lists — full GFM." },
 ];
 
 const testimonials = [
@@ -97,7 +71,7 @@ const testimonials = [
   {
     name: "Marcus Rivera",
     role: "Software Engineer",
-    quote: "Finally, a markdown editor that feels premium without the bloat. Keyboard shortcuts are chef's kiss.",
+    quote: "Finally, a markdown editor that feels premium without the bloat.",
     rating: 5,
   },
   {
@@ -108,39 +82,26 @@ const testimonials = [
   },
 ];
 
-const stats = [
-  { value: "12+", label: "Power features" },
-  { value: "0", label: "Accounts needed" },
-  { value: "∞", label: "Notes allowed" },
-  { value: "100%", label: "Free & open source" },
-];
-
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <div className="min-h-screen bg-background relative">
       <Navbar />
 
-      {/* Ambient background effects */}
-      <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute top-[-20%] left-[10%] w-[600px] h-[600px] rounded-full bg-accent/[0.05] blur-[150px]" />
-        <div className="absolute top-[30%] right-[-5%] w-[400px] h-[400px] rounded-full bg-primary/[0.04] blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[40%] w-[500px] h-[500px] rounded-full bg-accent/[0.03] blur-[130px]" />
-      </div>
-
       {/* ═══ HERO ═══ */}
-      <section ref={heroRef} className="relative pt-36 pb-8 md:pt-48 md:pb-16 px-6 overflow-hidden">
+      <section ref={heroRef} className="relative pt-32 md:pt-40 px-6 overflow-hidden">
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="max-w-5xl mx-auto text-center relative z-10"
+          className="max-w-6xl mx-auto relative z-10"
         >
+          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -151,77 +112,197 @@ const Index = () => {
             <span className="text-xs font-medium text-accent tracking-wide">Free & Open Source</span>
           </motion.div>
 
+          {/* Hero heading — large and centered */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] font-semibold leading-[1.03] tracking-[-0.02em] mb-6"
+            className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] font-semibold leading-[1.05] tracking-[-0.02em] mb-6 max-w-4xl"
           >
-            Your thoughts,
+            Where words
             <br />
-            <span className="italic text-accent">beautifully</span> organized.
+            find their <span className="italic text-accent">form</span>.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-base md:text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
+            className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
           >
-            A premium markdown editor crafted for focus. Write, preview, and organize
-            your notes with an interface that stays out of your way.
+            A premium markdown editor designed for clarity, crafted for writers
+            who value focus and elegance.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
-            className="flex flex-col sm:flex-row gap-3 justify-center mb-16"
+            className="flex gap-3 mb-14"
           >
             <Link to="/editor">
-              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-8 h-12 text-sm font-medium rounded-xl shadow-lg shadow-foreground/10 group">
-                Start Writing
+              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-8 h-12 text-sm font-medium rounded-full shadow-lg shadow-foreground/10 group">
+                Start writing
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
               </Button>
             </Link>
             <Link to="/tutorial">
-              <Button size="lg" variant="outline" className="px-8 h-12 text-sm font-medium rounded-xl border-border/60">
-                Learn Markdown
+              <Button size="lg" variant="outline" className="px-8 h-12 text-sm font-medium rounded-full border-border/60">
+                Learn more
               </Button>
             </Link>
           </motion.div>
+        </motion.div>
 
-          {/* Stats strip */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex flex-wrap justify-center gap-x-10 gap-y-4"
-          >
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-2xl md:text-3xl font-serif font-bold text-foreground">{s.value}</p>
-                <p className="text-[11px] text-muted-foreground uppercase tracking-wider mt-0.5">{s.label}</p>
-              </div>
-            ))}
-          </motion.div>
+        {/* Hero image — full-width immersive */}
+        <motion.div
+          initial={{ opacity: 0, y: 60, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-6xl mx-auto mb-0"
+        >
+          <div className="rounded-2xl overflow-hidden shadow-[0_40px_100px_-30px] shadow-foreground/[0.12]">
+            <img
+              src={heroImg}
+              alt="PMNT workspace preview"
+              width={1920}
+              height={1080}
+              className="w-full h-[300px] md:h-[450px] lg:h-[520px] object-cover"
+            />
+          </div>
         </motion.div>
       </section>
 
+      {/* ═══ WHAT IS PMNT — Asymmetric intro ═══ */}
+      <section className="px-6 py-20 md:py-28">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start"
+          >
+            <div>
+              <motion.h2 variants={fadeUp} custom={0} className="font-serif text-4xl md:text-5xl font-semibold tracking-[-0.02em] leading-[1.1] mb-5">
+                What is PMNT?
+              </motion.h2>
+              <motion.div variants={fadeUp} custom={1}>
+                <Link to="/editor">
+                  <Button variant="outline" className="rounded-full px-6 h-10 text-sm font-medium border-foreground/20 hover:bg-foreground hover:text-background transition-all">
+                    Explore now
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
+            <motion.p variants={fadeUp} custom={1} className="text-muted-foreground text-base md:text-lg leading-relaxed md:pt-2">
+              PMNT is a privacy-first markdown editor that helps you write, organize, and export
+              your notes — all from your browser with zero setup, no accounts, and no tracking.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ FEATURE CARDS — 3 columns with subtle colored backgrounds ═══ */}
+      <section className="px-6 pb-20 md:pb-28">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4"
+          >
+            {featureCards.map((card, i) => (
+              <motion.div
+                key={card.title}
+                variants={fadeUp}
+                custom={i}
+                className={`relative p-7 md:p-8 rounded-2xl border ${card.border} bg-gradient-to-br ${card.accent} overflow-hidden group hover:shadow-lg transition-all duration-500`}
+              >
+                <div className="mb-16 md:mb-24">
+                  <h3 className="font-serif text-xl md:text-2xl font-semibold mb-2 tracking-[-0.01em]">{card.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed max-w-[280px]">{card.description}</p>
+                </div>
+                <div className="w-12 h-12 rounded-xl bg-background/60 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                  <card.icon className="h-5 w-5 text-foreground/70" />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ ALL FEATURES — Clean grid ═══ */}
+      <section className="px-6 py-16 md:py-24 border-t border-border/40">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="mb-12"
+          >
+            <motion.p variants={fadeUp} custom={0} className="text-[11px] font-semibold text-accent tracking-[0.2em] uppercase mb-4">
+              Features
+            </motion.p>
+            <motion.h2 variants={fadeUp} custom={1} className="font-serif text-3xl md:text-4xl font-semibold tracking-[-0.01em] max-w-md">
+              Everything you need,{" "}
+              <span className="italic">nothing you don't</span>
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8"
+          >
+            {allFeatures.map((f, i) => (
+              <motion.div
+                key={f.title}
+                variants={fadeUp}
+                custom={i}
+                className="flex gap-4 items-start group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-muted/60 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors duration-300">
+                  <f.icon className="h-[18px] w-[18px] text-foreground/60 group-hover:text-accent transition-colors duration-300" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold mb-1">{f.title}</h3>
+                  <p className="text-muted-foreground text-[13px] leading-relaxed">{f.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ═══ EDITOR PREVIEW ═══ */}
-      <section className="px-6 pb-20 md:pb-28 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl mx-auto"
-        >
-          <div className="relative">
-            <div className="absolute inset-0 -z-10 rounded-3xl bg-accent/[0.08] blur-[60px] scale-[1.05]" />
-            <div className="rounded-2xl border border-border/60 bg-card overflow-hidden shadow-[0_30px_80px_-20px] shadow-foreground/[0.1]">
+      <section className="px-6 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="text-center mb-10"
+          >
+            <motion.p variants={fadeUp} custom={0} className="text-[11px] font-semibold text-accent tracking-[0.2em] uppercase mb-4">
+              Editor Preview
+            </motion.p>
+            <motion.h2 variants={fadeUp} custom={1} className="font-serif text-3xl md:text-4xl font-semibold tracking-[-0.01em]">
+              See it in action
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="rounded-2xl border border-border/60 bg-card overflow-hidden shadow-[0_30px_80px_-20px] shadow-foreground/[0.08]">
               {/* Window chrome */}
-              <div className="flex items-center gap-2 px-5 py-3.5 border-b border-border/50 bg-muted/30">
+              <div className="flex items-center gap-2 px-5 py-3 border-b border-border/50 bg-muted/30">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-destructive/40" />
                   <div className="w-3 h-3 rounded-full bg-accent/40" />
@@ -232,7 +313,7 @@ const Index = () => {
                 </div>
                 <div className="w-[54px]" />
               </div>
-              {/* Editor content */}
+              {/* Split panes */}
               <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border/50">
                 <div className="p-6 md:p-7 font-mono text-[12px] md:text-[13px] text-muted-foreground leading-[1.9]">
                   <p className="text-foreground/80"># Meeting Notes</p>
@@ -266,105 +347,37 @@ const Index = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* ═══ FEATURES — Bento Grid ═══ */}
-      <section className="px-6 py-16 md:py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/30 to-transparent" />
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-14"
-          >
-            <motion.p variants={fadeUp} custom={0} className="text-[11px] font-semibold text-accent tracking-[0.2em] uppercase mb-4">
-              Features
-            </motion.p>
-            <motion.h2 variants={fadeUp} custom={1} className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-semibold mb-5 tracking-[-0.01em]">
-              Everything you need,
-              <br className="hidden md:block" />
-              <span className="italic"> nothing you don't</span>
-            </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-muted-foreground text-base max-w-lg mx-auto leading-relaxed">
-              Built for writers who demand precision and elegance in their tools.
-            </motion.p>
-          </motion.div>
-
-          {/* Bento layout */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={stagger}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
-            {features.map((feature, i) => {
-              // Make first two cards span wider on large screens
-              const isHero = i < 2;
-              return (
-                <motion.div
-                  key={feature.title}
-                  variants={fadeUp}
-                  custom={i}
-                  className={`group relative p-6 md:p-7 rounded-2xl border border-border/40 bg-card/60 backdrop-blur-sm overflow-hidden
-                    hover:border-accent/30 hover:shadow-xl hover:shadow-accent/[0.06] transition-all duration-500
-                    ${isHero ? "lg:col-span-1" : ""}
-                  `}
-                >
-                  {/* Hover gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="relative z-10">
-                    <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-500">
-                      <feature.icon className="h-[18px] w-[18px] text-accent" />
-                    </div>
-                    <h3 className="font-serif text-base font-semibold mb-2 tracking-[-0.01em]">{feature.title}</h3>
-                    <p className="text-muted-foreground text-[13px] leading-relaxed">{feature.description}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
           </motion.div>
         </div>
       </section>
 
-      {/* ═══ WORKFLOW SHOWCASE ═══ */}
-      <section className="px-6 py-16 md:py-24 relative">
+      {/* ═══ WORKFLOW — Three steps ═══ */}
+      <section className="px-6 py-16 md:py-24 border-t border-border/40">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-14"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start mb-14"
           >
-            <motion.p variants={fadeUp} custom={0} className="text-[11px] font-semibold text-accent tracking-[0.2em] uppercase mb-4">
-              Workflow
+            <div>
+              <motion.p variants={fadeUp} custom={0} className="text-[11px] font-semibold text-accent tracking-[0.2em] uppercase mb-4">
+                How it works
+              </motion.p>
+              <motion.h2 variants={fadeUp} custom={1} className="font-serif text-3xl md:text-4xl font-semibold tracking-[-0.01em]">
+                Three steps to clarity
+              </motion.h2>
+            </div>
+            <motion.p variants={fadeUp} custom={2} className="text-muted-foreground text-base leading-relaxed md:pt-8">
+              No setup, no sign-up. Open your browser, write in markdown, and export your notes in any format you need.
             </motion.p>
-            <motion.h2 variants={fadeUp} custom={1} className="font-serif text-4xl md:text-5xl font-semibold tracking-[-0.01em]">
-              Three steps to clarity
-            </motion.h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              {
-                step: "01",
-                title: "Open & Write",
-                desc: "No sign-up. No setup. Just open the editor and start typing markdown. Auto-save handles the rest.",
-              },
-              {
-                step: "02",
-                title: "Organize & Tag",
-                desc: "Create folders, drag notes around, add colored tags. Find anything instantly with search or Ctrl+K.",
-              },
-              {
-                step: "03",
-                title: "Export & Share",
-                desc: "Download as Markdown, HTML, or print to PDF. Your notes are always portable and yours to keep.",
-              },
+              { step: "01", title: "Open & Write", desc: "No sign-up. No setup. Just open the editor and start typing markdown." },
+              { step: "02", title: "Organize & Tag", desc: "Create folders, drag notes, add colored tags. Find anything with Ctrl+K." },
+              { step: "03", title: "Export & Share", desc: "Download as Markdown, HTML, or print to PDF. Always portable." },
             ].map((item, i) => (
               <motion.div
                 key={item.step}
@@ -373,7 +386,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 custom={i}
-                className="relative p-8 rounded-2xl border border-border/40 bg-card/40 group hover:border-accent/20 transition-all duration-500"
+                className="relative p-7 rounded-2xl border border-border/40 bg-card/40 group hover:border-accent/20 transition-all duration-500"
               >
                 <span className="font-serif text-6xl font-bold text-foreground/[0.04] absolute top-4 right-6 group-hover:text-accent/10 transition-colors duration-500">
                   {item.step}
@@ -396,12 +409,12 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-12"
+            className="mb-12"
           >
             <motion.p variants={fadeUp} custom={0} className="text-[11px] font-semibold text-accent tracking-[0.2em] uppercase mb-4">
               Testimonials
             </motion.p>
-            <motion.h2 variants={fadeUp} custom={1} className="font-serif text-4xl md:text-5xl font-semibold tracking-[-0.01em]">
+            <motion.h2 variants={fadeUp} custom={1} className="font-serif text-3xl md:text-4xl font-semibold tracking-[-0.01em]">
               Loved by writers
             </motion.h2>
           </motion.div>
@@ -415,7 +428,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 custom={i}
-                className="p-7 rounded-2xl border border-border/40 bg-card/60 backdrop-blur-sm hover:border-accent/20 hover:shadow-lg hover:shadow-accent/[0.04] transition-all duration-500"
+                className="p-7 rounded-2xl border border-border/40 bg-card/60 hover:border-accent/20 hover:shadow-lg hover:shadow-accent/[0.04] transition-all duration-500"
               >
                 <div className="flex gap-0.5 mb-5">
                   {Array.from({ length: t.rating }).map((_, j) => (
@@ -439,15 +452,14 @@ const Index = () => {
       </section>
 
       {/* ═══ OPEN SOURCE BANNER ═══ */}
-      <section className="px-6 py-16 md:py-24 relative">
-        <div className="max-w-5xl mx-auto">
+      <section className="px-6 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="relative rounded-3xl border border-accent/20 bg-gradient-to-br from-accent/[0.06] via-background to-primary/[0.04] overflow-hidden p-10 md:p-16"
+            className="relative rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/[0.06] via-background to-primary/[0.04] overflow-hidden p-10 md:p-14"
           >
-            {/* Decorative circles */}
             <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-accent/[0.06] blur-3xl" />
             <div className="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-primary/[0.04] blur-3xl" />
 
@@ -475,12 +487,12 @@ const Index = () => {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="px-6 py-16 md:py-24 relative">
+      <section className="px-6 py-16 md:py-24 border-t border-border/40">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center relative z-10"
+          className="max-w-3xl mx-auto text-center"
         >
           <motion.h2 variants={fadeUp} custom={0} className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 tracking-[-0.02em]">
             Ready to write?
@@ -490,7 +502,7 @@ const Index = () => {
           </motion.p>
           <motion.div variants={fadeUp} custom={2}>
             <Link to="/editor">
-              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-10 h-12 text-sm font-medium rounded-xl shadow-lg shadow-foreground/10 group">
+              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-10 h-12 text-sm font-medium rounded-full shadow-lg shadow-foreground/10 group">
                 Open Editor
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
               </Button>
