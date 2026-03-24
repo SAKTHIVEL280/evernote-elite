@@ -61,27 +61,6 @@ const allFeatures = [
   { icon: Pen, title: "Rich formatting", desc: "Tables, code blocks, task lists — full GFM." },
 ];
 
-const testimonials = [
-  {
-    name: "Sarah Chen",
-    role: "Technical Writer",
-    quote: "PMNT replaced three different apps for me. The split preview alone is worth it.",
-    rating: 5,
-  },
-  {
-    name: "Marcus Rivera",
-    role: "Software Engineer",
-    quote: "Finally, a markdown editor that feels premium without the bloat.",
-    rating: 5,
-  },
-  {
-    name: "Aisha Patel",
-    role: "Content Strategist",
-    quote: "I use PMNT daily for all my content drafts. The zen mode is incredibly productive.",
-    rating: 5,
-  },
-];
-
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
