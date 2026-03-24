@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 const markdownLines = [
   { text: "# Meeting Notes", delay: 0 },
@@ -26,18 +26,22 @@ const renderedContent = [
   { type: "li", text: "Budget approved for Q2 campaign", delay: 1000 },
   { type: "li", text: "New hire starts <em>next Monday</em>", delay: 1300 },
   { type: "h2", text: "Action Items", delay: 1700 },
-  { type: "ol", text: "Finalize design mockups", delay: 1900 },
-  { type: "ol", text: "Review analytics dashboard", delay: 2200 },
-  { type: "ol", text: "Schedule team retrospective", delay: 2500 },
+  { type: "ol", text: "Finalize design mockups", num: "1.", delay: 1900 },
+  { type: "ol", text: "Review analytics dashboard", num: "2.", delay: 2200 },
+  { type: "ol", text: "Schedule team retrospective", num: "3.", delay: 2500 },
   { type: "quote", text: "Great meeting, team! 🎉", delay: 2900 },
 ];
 
-const TypingLine = ({ text, startDelay, isActive }: { text: string; startDelay: number; isActive: boolean }) => {
+const TOTAL_DURATION = 3400;
+const PAUSE_BEFORE_RESET = 2000;
+
+const TypingLine = ({ text, startDelay, cycle }: { text: string; startDelay: number; cycle: number }) => {
   const [displayed, setDisplayed] = useState("");
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    if (!isActive) return;
+    setDisplayed("");
+    setDone(false);
     if (text === "") {
       const t = setTimeout(() => setDone(true), startDelay);
       return () => clearTimeout(t);
@@ -55,9 +59,9 @@ const TypingLine = ({ text, startDelay, isActive }: { text: string; startDelay: 
       return () => clearInterval(interval);
     }, startDelay);
     return () => clearTimeout(start);
-  }, [isActive, text, startDelay]);
+  }, [cycle, text, startDelay]);
 
-  if (!isActive && !done) return null;
+  if (!done && displayed === "") return null;
   if (text === "" && done) return <div className="h-4" />;
 
   return (
@@ -68,18 +72,18 @@ const TypingLine = ({ text, startDelay, isActive }: { text: string; startDelay: 
   );
 };
 
-const RenderedLine = ({ type, text, delay, isActive }: { type: string; text: string; delay: number; isActive: boolean }) => {
+const RenderedLine = ({ type, text, num, delay, cycle }: { type: string; text: string; num?: string; delay: number; cycle: number }) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (!isActive) return;
+    setShow(false);
     const t = setTimeout(() => setShow(true), delay + 100);
     return () => clearTimeout(t);
-  }, [isActive, delay]);
+  }, [cycle, delay]);
 
   if (!show) return null;
 
-  const content = (
+  return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
@@ -95,7 +99,7 @@ const RenderedLine = ({ type, text, delay, isActive }: { type: string; text: str
       )}
       {type === "ol" && (
         <div className="flex items-start gap-2 text-foreground/80 mb-1">
-          <span className="text-foreground/40 shrink-0 font-mono text-xs mt-0.5">{text.includes("Finalize") ? "1." : text.includes("Review") ? "2." : "3."}</span>
+          <span className="text-foreground/40 shrink-0 font-mono text-xs mt-0.5">{num}</span>
           <span>{text}</span>
         </div>
       )}
@@ -106,13 +110,20 @@ const RenderedLine = ({ type, text, delay, isActive }: { type: string; text: str
       )}
     </motion.div>
   );
-
-  return content;
 };
 
 export const AnimatedEditorPreview = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: false, margin: "-100px" });
+  const [cycle, setCycle] = useState(0);
+
+  useEffect(() => {
+    if (!isInView) return;
+    const interval = setInterval(() => {
+      setCycle((c) => c + 1);
+    }, TOTAL_DURATION + PAUSE_BEFORE_RESET);
+    return () => clearInterval(interval);
+  }, [isInView]);
 
   return (
     <div ref={ref}>
@@ -131,16 +142,14 @@ export const AnimatedEditorPreview = () => {
         </div>
         {/* Split panes */}
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border/50">
-          {/* Markdown side - typing animation */}
           <div className="p-6 md:p-7 font-mono text-[12px] md:text-[13px] leading-[1.9] min-h-[280px]">
             {markdownLines.map((line, i) => (
-              <TypingLine key={i} text={line.text} startDelay={line.delay} isActive={isInView} />
+              <TypingLine key={`${cycle}-${i}`} text={line.text} startDelay={line.delay} cycle={cycle} />
             ))}
           </div>
-          {/* Preview side - rendered content appearing */}
           <div className="p-6 md:p-7 text-[12px] md:text-[13px] leading-[1.9] min-h-[280px] hidden md:block">
             {renderedContent.map((item, i) => (
-              <RenderedLine key={i} type={item.type} text={item.text} delay={item.delay} isActive={isInView} />
+              <RenderedLine key={`${cycle}-${i}`} type={item.type} text={item.text} num={item.num} delay={item.delay} cycle={cycle} />
             ))}
           </div>
         </div>
