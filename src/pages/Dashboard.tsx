@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { usePageSEO } from "@/hooks/use-page-seo";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";

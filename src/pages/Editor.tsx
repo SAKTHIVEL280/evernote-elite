@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef, DragEvent, useMemo } from "react";
+import { usePageSEO } from "@/hooks/use-page-seo";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Navbar } from "@/components/Navbar";
