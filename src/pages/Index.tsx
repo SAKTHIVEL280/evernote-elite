@@ -134,7 +134,7 @@ const Index = () => {
                 </Link>
                 <Link to="/tutorial">
                   <Button size="lg" variant="outline" className="border-white/50 bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 hover:scale-[1.03] active:scale-[0.98] px-7 h-12 text-sm font-medium rounded-xl transition-all duration-200">
-                    Learn more
+                    Learn MD
                   </Button>
                 </Link>
               </motion.div>
