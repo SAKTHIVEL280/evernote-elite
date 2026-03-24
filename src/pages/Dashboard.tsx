@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { usePageSEO } from "@/hooks/use-page-seo";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -68,6 +69,7 @@ function calcStreak(writingDays: string[]): number {
 }
 
 const Dashboard = () => {
+  usePageSEO({ title: "Dashboard", description: "View your notes, stats, and writing streaks in PMNT's dashboard.", path: "/dashboard" });
   const navigate = useNavigate();
   const [notes, setNotes] = useState<Note[]>([]);
   const [folders, setFolders] = useState<NoteFolder[]>([]);

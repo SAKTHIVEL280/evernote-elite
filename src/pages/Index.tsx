@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { usePageSEO } from "@/hooks/use-page-seo";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AnimatedEditorPreview } from "@/components/AnimatedEditorPreview";
@@ -63,6 +64,7 @@ const allFeatures = [
 ];
 
 const Index = () => {
+  usePageSEO({ title: "Free Markdown Note Taker", description: "PMNT is a free, open-source markdown note-taking app. Write, organize, and export notes privately in your browser.", path: "/" });
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,

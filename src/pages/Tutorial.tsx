@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePageSEO } from "@/hooks/use-page-seo";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { motion } from "framer-motion";
@@ -67,6 +68,7 @@ const tips = [
 ];
 
 const Tutorial = () => {
+  usePageSEO({ title: "Markdown Tutorial", description: "Learn markdown syntax with interactive examples. Master headings, lists, code blocks, tables, and more.", path: "/tutorial" });
   const [openTip, setOpenTip] = useState<number | null>(null);
 
   return (

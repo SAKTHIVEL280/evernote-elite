@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef, DragEvent, useMemo } from "react";
+import { usePageSEO } from "@/hooks/use-page-seo";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Navbar } from "@/components/Navbar";
@@ -235,6 +236,7 @@ const toolbarActions = [
 // ─── Component ────────────────────────────────────────────────────
 
 const Editor = () => {
+  usePageSEO({ title: "Editor", description: "Write and preview markdown in real-time with PMNT's split-pane editor.", path: "/editor" });
   const [folders, setFolders] = useState<NoteFolder[]>(() => load("pmnt-folders", []));
   const [notes, setNotes] = useState<Note[]>(() => load("pmnt-notes-v2", []));
   const [tags, setTags] = useState<NoteTag[]>(() => load("pmnt-tags", []));
