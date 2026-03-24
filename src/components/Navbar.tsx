@@ -26,7 +26,7 @@ export function Navbar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4">
       <nav
-        className={`w-full max-w-3xl transition-all duration-500 rounded-[2rem] border ${
+        className={`w-full max-w-3xl transition-all duration-500 rounded-xl border ${
           scrolled
             ? "bg-background/80 backdrop-blur-2xl border-border shadow-[0_8px_32px_-8px] shadow-foreground/[0.08]"
             : "bg-background/95 backdrop-blur-xl border-transparent shadow-none"
