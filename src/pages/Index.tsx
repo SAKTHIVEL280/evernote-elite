@@ -76,7 +76,7 @@ const Index = () => {
       <Navbar />
 
       {/* ═══ HERO ═══ */}
-      <section ref={heroRef} className="relative h-screen px-2 md:px-3 pt-20 pb-2 md:pb-3 overflow-visible">
+      <section ref={heroRef} className="relative h-[calc(100vh-5rem)] px-2 md:px-3 pt-20 pb-2 md:pb-3 overflow-visible">
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
