@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
   Split, Keyboard, Download, FolderOpen, Zap, Check,
-  ArrowRight, Star, Pen, Shield, Tag, Pin, Archive,
+  ArrowRight, Pen, Shield, Tag, Pin, Archive,
   Command, FileText, Sparkles,
 } from "lucide-react";
 import heroImg from "@/assets/hero-workspace.jpg";
