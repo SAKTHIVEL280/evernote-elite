@@ -102,10 +102,10 @@ const Index = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.03em] mb-5 text-white whitespace-nowrap"
+                className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.03em] mb-5 text-white"
               >
-                Your thoughts, beautifully{" "}
-                <span className="italic">organized</span>.
+                Your thoughts,<br />
+                beautifully <span className="italic">organized</span>.
               </motion.h1>
 
               <motion.p
