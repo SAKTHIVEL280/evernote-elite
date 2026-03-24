@@ -306,74 +306,35 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Free & Open Source */}
       <section className="px-6 py-28 md:py-40 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/30 to-transparent" />
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-16"
+            className="text-center"
           >
             <motion.p variants={fadeUp} custom={0} className="text-[11px] font-semibold text-accent tracking-[0.2em] uppercase mb-4">
-              Pricing
+              Open Source
             </motion.p>
             <motion.h2 variants={fadeUp} custom={1} className="font-serif text-4xl md:text-5xl font-semibold mb-5 tracking-[-0.01em]">
-              Simple, transparent pricing
+              100% free. Forever.
             </motion.h2>
-            <motion.p variants={fadeUp} custom={2} className="text-muted-foreground text-base">
-              Start free. Upgrade when you're ready.
+            <motion.p variants={fadeUp} custom={2} className="text-muted-foreground text-base max-w-lg mx-auto mb-10 leading-relaxed">
+              PMNT is completely free and open source. No accounts, no subscriptions, no tracking.
+              Your notes stay on your device — private by default.
             </motion.p>
+            <motion.div variants={fadeUp} custom={3} className="flex flex-wrap justify-center gap-6 text-sm text-foreground/70">
+              {["Unlimited notes", "All features included", "No account required", "Privacy-first", "Works offline"].map((item) => (
+                <span key={item} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-accent" />
+                  {item}
+                </span>
+              ))}
+            </motion.div>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {pricingTiers.map((tier, i) => (
-              <motion.div
-                key={tier.name}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                custom={i}
-                className={`p-8 rounded-2xl border relative transition-all duration-500 ${
-                  tier.highlighted
-                    ? "border-accent/40 bg-background shadow-[0_20px_60px_-15px] shadow-accent/[0.1]"
-                    : "border-border/40 bg-background/80 hover:border-border/60"
-                }`}
-              >
-                {tier.highlighted && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-foreground text-background text-[10px] font-semibold rounded-full tracking-wider uppercase">
-                    Most Popular
-                  </div>
-                )}
-                <h3 className="font-serif text-2xl font-semibold mb-1.5">{tier.name}</h3>
-                <p className="text-[13px] text-muted-foreground mb-5">{tier.description}</p>
-                <div className="mb-7">
-                  <span className="text-4xl font-semibold tracking-tight">{tier.price}</span>
-                  <span className="text-muted-foreground text-sm ml-1">{tier.period}</span>
-                </div>
-                <Button
-                  className={`w-full mb-7 rounded-xl h-10 text-[13px] font-medium ${
-                    tier.highlighted
-                      ? "bg-foreground text-background hover:bg-foreground/90 shadow-md shadow-foreground/10"
-                      : "border-border/60"
-                  }`}
-                  variant={tier.highlighted ? "default" : "outline"}
-                >
-                  {tier.cta}
-                </Button>
-                <ul className="space-y-3">
-                  {tier.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2.5 text-[13px] text-foreground/80">
-                      <Check className="h-3.5 w-3.5 text-accent shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
