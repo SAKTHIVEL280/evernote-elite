@@ -96,10 +96,19 @@ const Index = () => {
       <Navbar />
 
       {/* ═══ HERO ═══ */}
-      <section ref={heroRef} className="relative pt-32 md:pt-44 pb-20 md:pb-32 px-6 overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
+        {/* Full background image, heavily lightened */}
+        <img
+          src={heroImg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.15]"
+        />
+        {/* Light wash overlay */}
+        <div className="absolute inset-0 bg-background/40" />
+
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="max-w-3xl mx-auto flex flex-col items-center text-center"
+          className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center py-20"
         >
           {/* Small icon */}
           <motion.div
@@ -144,25 +153,6 @@ const Index = () => {
               </Button>
             </Link>
           </motion.div>
-        </motion.div>
-
-        {/* Decorative hero image at the bottom */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-5xl mx-auto mt-16 md:mt-24"
-        >
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50">
-            <img
-              src={heroImg}
-              alt="PMNT workspace"
-              width={1920}
-              height={1080}
-              className="w-full h-auto object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
-          </div>
         </motion.div>
       </section>
 
