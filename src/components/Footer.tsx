@@ -29,6 +29,7 @@ export function Footer() {
                 { to: "/dashboard", label: "Dashboard" },
                 { to: "/editor", label: "Editor" },
                 { to: "/tutorial", label: "Tutorial" },
+                { to: "/about", label: "About" },
               ].map((link) => (
                 <Link
                   key={link.to}
@@ -45,20 +46,24 @@ export function Footer() {
           <div>
             <p className="text-[10px] font-semibold text-muted-foreground/60 tracking-[0.2em] uppercase mb-4">Resources</p>
             <nav className="flex flex-col gap-2.5">
-              {[
-                { to: "/about", label: "About" },
-                { to: "/tutorial", label: "Markdown Guide" },
-              ].map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.to}
-                  className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              <Link
+                to="/about"
+                className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit"
+              >
+                About
+              </Link>
               <a
-                href="#"
+                href="https://www.markdownguide.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit inline-flex items-center gap-1"
+              >
+                Markdown Guide <ArrowUpRight className="w-3 h-3" />
+              </a>
+              <a
+                href="https://github.com/SAKTHIVEL280/PMNT"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit inline-flex items-center gap-1"
               >
                 GitHub <ArrowUpRight className="w-3 h-3" />
@@ -70,15 +75,22 @@ export function Footer() {
           <div>
             <p className="text-[10px] font-semibold text-muted-foreground/60 tracking-[0.2em] uppercase mb-4">Connect</p>
             <nav className="flex flex-col gap-2.5">
-              {["Twitter", "Discord"].map((label) => (
-                <a
-                  key={label}
-                  href="#"
-                  className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit inline-flex items-center gap-1"
-                >
-                  {label} <ArrowUpRight className="w-3 h-3" />
-                </a>
-              ))}
+              <a
+                href="https://x.com/SAKTHIVEL_E_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit inline-flex items-center gap-1"
+              >
+                X (Twitter) <ArrowUpRight className="w-3 h-3" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/sakthivel-e-1924a0292/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit inline-flex items-center gap-1"
+              >
+                LinkedIn <ArrowUpRight className="w-3 h-3" />
+              </a>
             </nav>
           </div>
         </div>
