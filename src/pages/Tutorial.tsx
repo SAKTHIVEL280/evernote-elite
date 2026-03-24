@@ -68,6 +68,7 @@ const tips = [
 ];
 
 const Tutorial = () => {
+  usePageSEO({ title: "Markdown Tutorial", description: "Learn markdown syntax with interactive examples. Master headings, lists, code blocks, tables, and more.", path: "/tutorial" });
   const [openTip, setOpenTip] = useState<number | null>(null);
 
   return (
