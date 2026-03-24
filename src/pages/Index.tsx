@@ -96,27 +96,27 @@ const Index = () => {
       <Navbar />
 
       {/* ═══ HERO ═══ */}
-      <section ref={heroRef} className="relative pt-20 px-6 overflow-hidden">
+      <section ref={heroRef} className="relative pt-20 px-4 md:px-6 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-6xl mx-auto"
+          className="max-w-[1400px] mx-auto"
         >
-          <div className="relative rounded-3xl overflow-hidden min-h-[480px] md:min-h-[560px] lg:min-h-[620px]">
+          <div className="relative rounded-[2rem] overflow-hidden min-h-[75vh] md:min-h-[82vh]">
             {/* Full background image */}
             <img
               src={heroImg}
               alt="PMNT workspace"
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover scale-105"
             />
-            {/* Dark gradient overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
+            {/* Clean gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
 
             {/* Content overlaid on image */}
             <motion.div
               style={{ y: heroY, opacity: heroOpacity }}
-              className="relative z-10 flex flex-col items-start justify-end px-8 md:px-14 pb-12 md:pb-16 min-h-[480px] md:min-h-[560px] lg:min-h-[620px]"
+              className="relative z-10 flex flex-col items-start justify-end px-10 md:px-16 pb-14 md:pb-20 min-h-[75vh] md:min-h-[82vh]"
             >
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
