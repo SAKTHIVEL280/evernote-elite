@@ -121,14 +121,11 @@ const Index = () => {
               className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20 md:py-28 min-h-[420px] md:min-h-[520px] lg:min-h-[580px]"
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-background/30 bg-background/10 backdrop-blur-sm mb-6"
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="bg-background/10 backdrop-blur-md border border-background/20 rounded-2xl px-8 py-10 md:px-14 md:py-14 flex flex-col items-center"
               >
-                <Sparkles className="w-3.5 h-3.5 text-background" />
-                <span className="text-xs font-medium text-background tracking-wide">Free & Open Source</span>
-              </motion.div>
 
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
@@ -162,6 +159,7 @@ const Index = () => {
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                   </Button>
                 </Link>
+              </motion.div>
               </motion.div>
             </motion.div>
           </div>
