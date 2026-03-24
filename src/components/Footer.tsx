@@ -1,105 +1,106 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Pen } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const currentYear = new Date().getFullYear();
 
-const navLinks = [
-  { to: "/editor", label: "Editor" },
-  { to: "/dashboard", label: "Dashboard" },
-  { to: "/tutorial", label: "Tutorial" },
-  { to: "/about", label: "About" },
-];
-
-const socialLinks = [
-  { label: "Twitter", href: "#" },
-  { label: "GitHub", href: "#" },
-  { label: "Discord", href: "#" },
-];
-
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-foreground text-background">
-      {/* Decorative ink bleed line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
-      <div className="absolute top-0 left-[20%] w-32 h-[1px] bg-accent/40 blur-sm" />
-      <div className="absolute top-0 right-[30%] w-20 h-[1px] bg-accent/30 blur-sm" />
+    <footer className="relative bg-background border-t border-border/30 overflow-hidden">
+      {/* Subtle top line accent */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6">
-        {/* Top section: large branding */}
-        <div className="pt-20 pb-16 md:pt-28 md:pb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="flex items-start justify-between flex-col md:flex-row gap-10">
-              {/* Large wordmark */}
-              <div className="max-w-md">
-                <h2 className="font-serif text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] mb-5">
-                  Write with
-                  <br />
-                  <span className="italic text-accent">intention.</span>
-                </h2>
-                <p className="text-background/50 text-sm leading-relaxed">
-                  PMNT is a free, open-source markdown note taker designed for people who
-                  think in text. No accounts. No cloud. Just your thoughts, beautifully organized.
-                </p>
-              </div>
+        {/* Upper grid */}
+        <div className="pt-16 pb-12 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8">
+          {/* Col 1: Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <span className="font-serif text-lg font-semibold tracking-tight">PMNT</span>
+            <p className="text-[13px] text-muted-foreground leading-relaxed mt-3 max-w-[240px]">
+              Free & open-source markdown note taker. Your thoughts, your device, your privacy.
+            </p>
+          </div>
 
-              {/* CTA */}
-              <Link
-                to="/editor"
-                className="group flex items-center gap-3 px-6 py-4 rounded-2xl border border-background/10 hover:border-accent/40 bg-background/[0.04] hover:bg-background/[0.08] transition-all duration-300"
+          {/* Col 2: Navigate */}
+          <div>
+            <p className="text-[10px] font-semibold text-muted-foreground/60 tracking-[0.2em] uppercase mb-4">Navigate</p>
+            <nav className="flex flex-col gap-2.5">
+              {[
+                { to: "/", label: "Home" },
+                { to: "/dashboard", label: "Dashboard" },
+                { to: "/editor", label: "Editor" },
+                { to: "/tutorial", label: "Tutorial" },
+              ].map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Col 3: Resources */}
+          <div>
+            <p className="text-[10px] font-semibold text-muted-foreground/60 tracking-[0.2em] uppercase mb-4">Resources</p>
+            <nav className="flex flex-col gap-2.5">
+              {[
+                { to: "/about", label: "About" },
+                { to: "/tutorial", label: "Markdown Guide" },
+              ].map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <a
+                href="#"
+                className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit inline-flex items-center gap-1"
               >
-                <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
-                  <Pen className="w-4 h-4 text-accent" />
-                </div>
-                <div>
-                  <span className="text-sm font-medium block">Start Writing</span>
-                  <span className="text-[11px] text-background/40">No sign-up required</span>
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-background/30 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-2" />
-              </Link>
-            </div>
-          </motion.div>
+                GitHub <ArrowUpRight className="w-3 h-3" />
+              </a>
+            </nav>
+          </div>
+
+          {/* Col 4: Connect */}
+          <div>
+            <p className="text-[10px] font-semibold text-muted-foreground/60 tracking-[0.2em] uppercase mb-4">Connect</p>
+            <nav className="flex flex-col gap-2.5">
+              {["Twitter", "Discord"].map((label) => (
+                <a
+                  key={label}
+                  href="#"
+                  className="text-[13px] text-foreground/60 hover:text-foreground transition-colors w-fit inline-flex items-center gap-1"
+                >
+                  {label} <ArrowUpRight className="w-3 h-3" />
+                </a>
+              ))}
+            </nav>
+          </div>
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-background/[0.08]" />
+        <div className="h-px bg-border/30" />
 
-        {/* Bottom section: nav + legal */}
-        <div className="py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          {/* Navigation */}
-          <nav className="flex flex-wrap items-center gap-x-8 gap-y-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="text-[13px] text-background/40 hover:text-accent transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <span className="hidden md:block w-px h-3 bg-background/10" />
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-[13px] text-background/40 hover:text-accent transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Copyright */}
-          <div className="flex items-center gap-3">
-            <span className="font-serif text-sm font-semibold tracking-tight text-background/60">PMNT</span>
-            <span className="text-background/20">·</span>
-            <p className="text-[11px] text-background/30">
-              © {currentYear} · Free & open source · MIT License
+        {/* Giant wordmark */}
+        <div className="py-8 md:py-10 flex flex-col md:flex-row items-end justify-between gap-4">
+          <h2
+            className="font-serif text-[clamp(4rem,12vw,10rem)] font-bold leading-[0.85] tracking-[-0.04em] text-foreground/[0.06] select-none"
+            aria-hidden="true"
+          >
+            PMNT
+          </h2>
+          <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6 pb-2 md:pb-4">
+            <p className="text-[11px] text-muted-foreground/50">
+              © {currentYear} PMNT
+            </p>
+            <span className="hidden md:block text-muted-foreground/20">·</span>
+            <p className="text-[11px] text-muted-foreground/50">
+              MIT License · Free forever
             </p>
           </div>
         </div>
