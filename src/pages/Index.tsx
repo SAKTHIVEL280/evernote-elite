@@ -96,79 +96,74 @@ const Index = () => {
       <Navbar />
 
       {/* ═══ HERO ═══ */}
-      <section ref={heroRef} className="relative pt-32 md:pt-40 px-6 overflow-hidden">
+      <section ref={heroRef} className="relative pt-24 md:pt-32 px-6 overflow-hidden">
         <motion.div
-          style={{ y: heroY, opacity: heroOpacity }}
-          className="max-w-6xl mx-auto relative z-10"
-        >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] mb-8"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-accent" />
-            <span className="text-xs font-medium text-accent tracking-wide">Free & Open Source</span>
-          </motion.div>
-
-          {/* Hero heading — large and centered */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-5xl md:text-7xl lg:text-[5.5rem] font-semibold leading-[1.05] tracking-[-0.02em] mb-6 max-w-4xl"
-          >
-            Where words
-            <br />
-            find their <span className="italic text-accent">form</span>.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-base md:text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed"
-          >
-            A premium markdown editor designed for clarity, crafted for writers
-            who value focus and elegance.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35 }}
-            className="flex gap-3 mb-14"
-          >
-            <Link to="/editor">
-              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 px-8 h-12 text-sm font-medium rounded-full shadow-lg shadow-foreground/10 group">
-                Start writing
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-              </Button>
-            </Link>
-            <Link to="/tutorial">
-              <Button size="lg" variant="outline" className="px-8 h-12 text-sm font-medium rounded-full border-border/60">
-                Learn more
-              </Button>
-            </Link>
-          </motion.div>
-        </motion.div>
-
-        {/* Hero image — full-width immersive */}
-        <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.97 }}
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-6xl mx-auto mb-0"
+          transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-6xl mx-auto"
         >
-          <div className="rounded-2xl overflow-hidden shadow-[0_40px_100px_-30px] shadow-foreground/[0.12]">
+          <div className="relative rounded-3xl overflow-hidden min-h-[420px] md:min-h-[520px] lg:min-h-[580px]">
+            {/* Background image */}
             <img
               src={heroImg}
-              alt="PMNT workspace preview"
+              alt="PMNT workspace"
               width={1920}
               height={1080}
-              className="w-full h-[300px] md:h-[450px] lg:h-[520px] object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
             />
+            {/* Overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/20 to-foreground/10" />
+
+            {/* Content overlaid on image */}
+            <motion.div
+              style={{ y: heroY, opacity: heroOpacity }}
+              className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-20 md:py-28 min-h-[420px] md:min-h-[520px] lg:min-h-[580px]"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-background/30 bg-background/10 backdrop-blur-sm mb-6"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-background" />
+                <span className="text-xs font-medium text-background tracking-wide">Free & Open Source</span>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="font-serif text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.08] tracking-[-0.02em] mb-5 text-background max-w-3xl"
+              >
+                Where words
+                <br />
+                find their <span className="italic">form</span>.
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                className="text-sm md:text-base text-background/80 max-w-md mb-8 leading-relaxed"
+              >
+                A premium markdown editor designed for clarity, crafted for writers
+                who value focus and elegance.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.6 }}
+              >
+                <Link to="/editor">
+                  <Button size="lg" className="bg-background text-foreground hover:bg-background/90 px-8 h-11 text-sm font-medium rounded-full shadow-lg group">
+                    Start writing
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
         </motion.div>
       </section>
