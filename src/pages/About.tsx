@@ -20,7 +20,7 @@ const values = [
 ];
 
 const timeline = [
-  { year: "The Problem", event: "Searched for a better note-taking app — something clean, easy to access, and markdown-first. Couldn't find one that felt right." },
+  { year: "The Problem", event: "Searched for a better note-taking app, something clean, easy to access, and markdown-first. Couldn't find one that felt right." },
   { year: "The Idea", event: "Decided to stop searching and start building. If the perfect tool doesn't exist, why not create it?" },
   { year: "The Build", event: "Built PMNT from scratch with Lovable — an AI-powered development platform that turned the vision into reality." },
   { year: "The Result", event: "A free, privacy-first markdown editor that works entirely in your browser. No accounts, no cloud, no compromises." },
