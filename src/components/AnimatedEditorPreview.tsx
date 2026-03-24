@@ -139,7 +139,7 @@ export const AnimatedEditorPreview = () => {
           <div className="w-[54px]" />
         </div>
         {/* Split panes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border/50 h-[320px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border/50 h-[420px]">
           <div className="p-6 md:p-7 font-mono text-[12px] md:text-[13px] leading-[1.9] h-full overflow-hidden">
             {markdownLines.map((line, i) => (
               <TypingLine key={`${cycle}-${i}`} text={line.text} startDelay={line.delay} cycle={cycle} />
