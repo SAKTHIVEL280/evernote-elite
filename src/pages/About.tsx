@@ -55,7 +55,7 @@ const About = () => {
             transition={{ delay: 0.2, duration: 0.7 }}
             className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed"
           >
-            I'm Sakthivel. I wanted a markdown note-taking app that was clean, fast, and easy to access — but couldn't find one. So I built my own, with the help of Lovable.
+            I'm Sakthivel. I wanted a markdown note-taking app that was clean, fast, and easy to access, but couldn't find one. So I built my own, with the help of Lovable.
           </motion.p>
         </div>
       </section>
