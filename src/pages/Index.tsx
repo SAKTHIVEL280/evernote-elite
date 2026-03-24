@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { AnimatedEditorPreview } from "@/components/AnimatedEditorPreview";
 import { Button } from "@/components/ui/button";
 import {
   Split, Keyboard, Download, FolderOpen, Zap, Check,
@@ -125,13 +126,13 @@ const Index = () => {
                 className="flex gap-3"
               >
                 <Link to="/editor">
-                  <Button size="lg" className="bg-white text-black hover:bg-white/90 px-7 h-12 text-sm font-medium rounded-xl group">
+                  <Button size="lg" className="bg-white text-black hover:bg-white/90 hover:scale-[1.03] active:scale-[0.98] px-7 h-12 text-sm font-medium rounded-xl group transition-all duration-200">
                     Start writing
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </Button>
                 </Link>
                 <Link to="/tutorial">
-                  <Button size="lg" variant="outline" className="border-white/50 bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 px-7 h-12 text-sm font-medium rounded-xl">
+                  <Button size="lg" variant="outline" className="border-white/50 bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 hover:scale-[1.03] active:scale-[0.98] px-7 h-12 text-sm font-medium rounded-xl transition-all duration-200">
                     Learn more
                   </Button>
                 </Link>
@@ -156,7 +157,7 @@ const Index = () => {
               </motion.h2>
               <motion.div variants={fadeUp} custom={1}>
                 <Link to="/editor">
-                  <Button variant="outline" className="rounded-full px-6 h-10 text-sm font-medium border-foreground/20 hover:bg-foreground hover:text-background transition-all">
+                  <Button variant="outline" className="rounded-full px-6 h-10 text-sm font-medium border-foreground/20 hover:bg-foreground hover:text-background hover:scale-[1.03] active:scale-[0.98] transition-all duration-200">
                     Explore now
                   </Button>
                 </Link>
@@ -185,7 +186,7 @@ const Index = () => {
                 key={card.title}
                 variants={fadeUp}
                 custom={i}
-                className={`relative p-7 md:p-8 rounded-2xl border ${card.border} bg-gradient-to-br ${card.accent} overflow-hidden group hover:shadow-lg transition-all duration-500`}
+                className={`relative p-7 md:p-8 rounded-2xl border ${card.border} bg-gradient-to-br ${card.accent} overflow-hidden group hover:shadow-lg hover:scale-[1.02] hover:-translate-y-1 transition-all duration-500`}
               >
                 <div className="mb-16 md:mb-24">
                   <h3 className="font-serif text-xl md:text-2xl font-semibold mb-2 tracking-[-0.01em]">{card.title}</h3>
@@ -230,9 +231,9 @@ const Index = () => {
                 key={f.title}
                 variants={fadeUp}
                 custom={i}
-                className="flex gap-4 items-start group"
+                className="flex gap-4 items-start group cursor-default"
               >
-                <div className="w-10 h-10 rounded-xl bg-muted/60 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors duration-300">
+                <div className="w-10 h-10 rounded-xl bg-muted/60 flex items-center justify-center shrink-0 group-hover:bg-accent/15 group-hover:scale-110 transition-all duration-300">
                   <f.icon className="h-[18px] w-[18px] text-foreground/60 group-hover:text-accent transition-colors duration-300" />
                 </div>
                 <div>
@@ -268,53 +269,7 @@ const Index = () => {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="rounded-2xl border border-border/60 bg-card overflow-hidden shadow-[0_30px_80px_-20px] shadow-foreground/[0.08]">
-              {/* Window chrome */}
-              <div className="flex items-center gap-2 px-5 py-3 border-b border-border/50 bg-muted/30">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-destructive/40" />
-                  <div className="w-3 h-3 rounded-full bg-accent/40" />
-                  <div className="w-3 h-3 rounded-full bg-primary/20" />
-                </div>
-                <div className="flex-1 flex justify-center">
-                  <span className="text-[11px] text-muted-foreground font-mono px-3 py-0.5 rounded-md bg-foreground/[0.04]">meeting-notes.md</span>
-                </div>
-                <div className="w-[54px]" />
-              </div>
-              {/* Split panes */}
-              <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border/50">
-                <div className="p-6 md:p-7 font-mono text-[12px] md:text-[13px] text-muted-foreground leading-[1.9]">
-                  <p className="text-foreground/80"># Meeting Notes</p>
-                  <p className="mt-3">## Key Decisions</p>
-                  <p className="mt-2">- Launch date set for **March 15th**</p>
-                  <p>- Budget approved for Q2 campaign</p>
-                  <p>- New hire starts *next Monday*</p>
-                  <p className="mt-3">## Action Items</p>
-                  <p className="mt-2">1. Finalize design mockups</p>
-                  <p>2. Review analytics dashboard</p>
-                  <p>3. Schedule team retrospective</p>
-                  <p className="mt-3">{"> Great meeting, team! 🎉"}</p>
-                </div>
-                <div className="p-6 md:p-7 text-[12px] md:text-[13px] leading-[1.9]">
-                  <h1 className="font-serif text-xl md:text-2xl font-bold mb-4 text-foreground">Meeting Notes</h1>
-                  <h2 className="font-serif text-sm md:text-base font-bold mb-2 text-foreground/90">Key Decisions</h2>
-                  <ul className="list-disc pl-5 mb-4 space-y-1 text-foreground/80">
-                    <li>Launch date set for <strong className="text-foreground">March 15th</strong></li>
-                    <li>Budget approved for Q2 campaign</li>
-                    <li>New hire starts <em>next Monday</em></li>
-                  </ul>
-                  <h2 className="font-serif text-sm md:text-base font-bold mb-2 text-foreground/90">Action Items</h2>
-                  <ol className="list-decimal pl-5 mb-4 space-y-1 text-foreground/80">
-                    <li>Finalize design mockups</li>
-                    <li>Review analytics dashboard</li>
-                    <li>Schedule team retrospective</li>
-                  </ol>
-                  <blockquote className="border-l-[3px] border-accent pl-4 italic text-muted-foreground">
-                    Great meeting, team! 🎉
-                  </blockquote>
-                </div>
-              </div>
-            </div>
+            <AnimatedEditorPreview />
           </motion.div>
         </div>
       </section>
@@ -354,7 +309,7 @@ const Index = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 custom={i}
-                className="relative p-7 rounded-2xl border border-border/40 bg-card/40 group hover:border-accent/20 transition-all duration-500"
+                className="relative p-7 rounded-2xl border border-border/40 bg-card/40 group hover:border-accent/20 hover:scale-[1.02] hover:-translate-y-1 transition-all duration-500"
               >
                 <span className="font-serif text-6xl font-bold text-foreground/[0.04] absolute top-4 right-6 group-hover:text-accent/10 transition-colors duration-500">
                   {item.step}
