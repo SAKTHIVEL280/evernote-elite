@@ -543,7 +543,7 @@ const Editor = () => {
       <div className="h-screen flex flex-col bg-background">
         {!zenMode && <Navbar />}
 
-        <div className={`flex-1 flex flex-col overflow-hidden ${!zenMode ? "pt-[72px]" : ""}`}>
+        <div className={`flex-1 flex flex-col overflow-hidden ${!zenMode ? "pt-20" : ""}`}>
           {mobileView === "sidebar" && (
             <div className="flex-1 overflow-hidden">
               <SidebarContent />
@@ -638,7 +638,7 @@ const Editor = () => {
     <div className="h-screen flex flex-col bg-background">
       {!zenMode && <Navbar />}
 
-      <div className={`flex flex-1 overflow-hidden ${!zenMode ? "pt-[72px]" : ""}`}>
+      <div className={`flex flex-1 overflow-hidden ${!zenMode ? "pt-20" : ""}`}>
         {/* Sidebar */}
         {!zenMode && sidebarOpen && (
           <div className="w-64 border-r border-border/50 bg-card/50 flex flex-col shrink-0">
