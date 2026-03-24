@@ -201,7 +201,7 @@ const Index = () => {
       </section>
 
       {/* ═══ ALL FEATURES — Clean grid ═══ */}
-      <section className="px-6 py-16 md:py-24 border-t border-border/40">
+      <section className="px-6 py-10 md:py-14 border-t border-border/40">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial="hidden"
