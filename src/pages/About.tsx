@@ -13,7 +13,7 @@ const fadeUp = {
 };
 
 const values = [
-  { icon: Target, title: "Focus", description: "Built to help you concentrate on what matters — your writing, nothing else." },
+  { icon: Target, title: "Focus", description: "Built to help you concentrate on what matters: your writing, nothing else." },
   { icon: Sparkles, title: "Craft", description: "Every pixel, every interaction is considered. Good tools should feel invisible." },
   { icon: Heart, title: "Simplicity", description: "Powerful doesn't mean complicated. The best features are the ones you barely notice." },
   { icon: Code2, title: "Open Source", description: "PMNT is free and open-source. Inspect, fork, contribute — it's yours." },
