@@ -106,43 +106,50 @@ const Index = () => {
               style={{ y: heroY, opacity: heroOpacity }}
               className="relative z-10 flex flex-col items-center justify-center text-center px-8 h-full"
             >
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.03em] mb-5 text-white"
-              >
-                Your thoughts,<br />
-                beautifully <span className="italic">organized</span>.
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.45 }}
-                className="text-sm md:text-base text-white/75 max-w-md mb-10 leading-relaxed"
-              >
-                A premium markdown editor designed for clarity, crafted for writers
-                who value focus and elegance.
-              </motion.p>
-
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.55 }}
-                className="flex gap-3"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl px-10 py-12 md:px-16 md:py-14 max-w-2xl"
               >
-                <Link to="/editor">
-                  <Button size="lg" className="bg-white text-black hover:bg-white/90 hover:scale-[1.03] active:scale-[0.98] px-7 h-12 text-sm font-medium rounded-xl group transition-all duration-200">
-                    Start writing
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </Link>
-                <Link to="/tutorial">
-                  <Button size="lg" variant="outline" className="border-white/50 bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 hover:scale-[1.03] active:scale-[0.98] px-7 h-12 text-sm font-medium rounded-xl transition-all duration-200">
-                    Learn MD
-                  </Button>
-                </Link>
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.03em] mb-5 text-white"
+                >
+                  Your thoughts,<br />
+                  beautifully <span className="italic">organized</span>.
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.45 }}
+                  className="text-sm md:text-base text-white/75 max-w-md mx-auto mb-10 leading-relaxed"
+                >
+                  A premium markdown editor designed for clarity, crafted for writers
+                  who value focus and elegance.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.55 }}
+                  className="flex gap-3 justify-center"
+                >
+                  <Link to="/editor">
+                    <Button size="lg" className="bg-white text-black hover:bg-white/90 hover:scale-[1.03] active:scale-[0.98] px-7 h-12 text-sm font-medium rounded-xl group transition-all duration-200">
+                      Start writing
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </Button>
+                  </Link>
+                  <Link to="/tutorial">
+                    <Button size="lg" variant="outline" className="border-white/50 bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 hover:scale-[1.03] active:scale-[0.98] px-7 h-12 text-sm font-medium rounded-xl transition-all duration-200">
+                      Learn MD
+                    </Button>
+                  </Link>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
