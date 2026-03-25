@@ -110,7 +110,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="font-serif text-3xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.03em] mb-4 text-white bg-black/15 backdrop-blur-sm rounded-xl px-5 py-3 md:px-8 md:py-5 inline-block border border-white/[0.06]"
+                className="font-serif text-3xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-[-0.03em] mb-4 text-white bg-black/25 backdrop-blur-md rounded-xl px-5 py-3 md:px-8 md:py-5 inline-block border border-white/10"
               >
                 Your thoughts,<br />
                 beautifully <span className="italic">organized</span>.
