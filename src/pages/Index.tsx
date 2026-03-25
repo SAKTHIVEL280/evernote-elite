@@ -12,6 +12,7 @@ import {
   Command, FileText, Sparkles,
 } from "lucide-react";
 import heroImg from "@/assets/hero-workspace.jpg";
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
