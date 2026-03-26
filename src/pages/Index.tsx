@@ -1,9 +1,10 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState, useCallback } from "react";
 import { usePageSEO } from "@/hooks/use-page-seo";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import { AnimatedEditorPreview } from "@/components/AnimatedEditorPreview";
 import { Button } from "@/components/ui/button";
 import {
@@ -65,6 +66,7 @@ const allFeatures = [
 ];
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
   usePageSEO({ title: "Free Markdown Note Taker", description: "PMNT is a free, open-source markdown note-taking app. Write, organize, and export notes privately in your browser.", path: "/" });
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -74,8 +76,13 @@ const Index = () => {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  const handleVideoReady = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background relative">
+      <LoadingScreen isLoading={isLoading} />
       <Navbar />
 
       {/* ═══ HERO ═══ */}
@@ -94,6 +101,8 @@ const Index = () => {
               muted
               playsInline
               poster={heroImg}
+              onCanPlayThrough={handleVideoReady}
+              onError={handleVideoReady}
               className="absolute inset-0 w-full h-full object-cover scale-110"
             >
               <source src={heroVideo.url} type="video/mp4" />
