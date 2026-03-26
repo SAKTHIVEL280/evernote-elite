@@ -101,6 +101,8 @@ const Index = () => {
               muted
               playsInline
               poster={heroImg}
+              onCanPlayThrough={handleVideoReady}
+              onError={handleVideoReady}
               className="absolute inset-0 w-full h-full object-cover scale-110"
             >
               <source src={heroVideo.url} type="video/mp4" />
