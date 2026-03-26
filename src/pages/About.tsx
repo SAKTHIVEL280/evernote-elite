@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { usePageSEO } from "@/hooks/use-page-seo";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Switch } from "@/components/ui/switch";
 import { Heart, Target, Sparkles, Code2, ArrowUpRight } from "lucide-react";
 
 const fadeUp = {
