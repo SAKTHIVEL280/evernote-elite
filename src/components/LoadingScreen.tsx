@@ -41,7 +41,7 @@ export const LoadingScreen = ({ isLoading }: LoadingScreenProps) => (
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
           className="text-muted-foreground/50 text-[11px] mt-6"
         >
           You can disable this in About → Settings
