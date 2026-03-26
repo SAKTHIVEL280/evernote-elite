@@ -210,6 +210,20 @@ const About = () => {
         </div>
       </section>
 
+      {/* Settings */}
+      <section className="px-6 py-10 border-t border-border/40">
+        <div className="max-w-xl mx-auto">
+          <h2 className="font-serif text-2xl font-semibold mb-6">Settings</h2>
+          <div className="flex items-center justify-between p-4 rounded-xl border border-border/40 bg-card/40">
+            <div>
+              <p className="text-sm font-medium">Show splash screen</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Display the loading animation when opening the app</p>
+            </div>
+            <SplashToggle />
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section className="px-6 py-20">
         <div className="max-w-xl mx-auto text-center">
