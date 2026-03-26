@@ -38,6 +38,14 @@ export const LoadingScreen = ({ isLoading }: LoadingScreenProps) => (
             className="h-full w-full bg-foreground/60 rounded-full origin-left"
           />
         </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.5 }}
+          className="text-muted-foreground/50 text-[11px] mt-6"
+        >
+          You can disable this in About → Settings
+        </motion.p>
       </motion.div>
     )}
   </AnimatePresence>
