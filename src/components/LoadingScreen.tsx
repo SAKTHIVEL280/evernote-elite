@@ -10,24 +10,32 @@ export const LoadingScreen = ({ isLoading }: LoadingScreenProps) => (
       <motion.div
         key="loader"
         initial={{ opacity: 1 }}
-        exit={{ opacity: 0, scale: 1.02 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center gap-6"
       >
         <motion.h1
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="font-serif text-3xl md:text-4xl font-bold tracking-[-0.03em]"
+          transition={{ duration: 0.6 }}
+          className="font-serif text-4xl md:text-5xl font-bold tracking-[-0.03em]"
         >
           PMNT
         </motion.h1>
-        <div className="w-48 h-[2px] bg-muted rounded-full overflow-hidden">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="text-muted-foreground text-sm tracking-wide"
+        >
+          Preparing your workspace…
+        </motion.p>
+        <div className="w-48 h-[2px] bg-muted rounded-full overflow-hidden mt-2">
           <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: "100%" }}
-            transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
-            className="h-full w-1/2 bg-foreground/60 rounded-full"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+            className="h-full w-full bg-foreground/60 rounded-full origin-left"
           />
         </div>
       </motion.div>
