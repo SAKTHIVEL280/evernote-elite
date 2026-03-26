@@ -66,6 +66,7 @@ const allFeatures = [
 ];
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
   usePageSEO({ title: "Free Markdown Note Taker", description: "PMNT is a free, open-source markdown note-taking app. Write, organize, and export notes privately in your browser.", path: "/" });
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -75,8 +76,13 @@ const Index = () => {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  const handleVideoReady = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background relative">
+      <LoadingScreen isLoading={isLoading} />
       <Navbar />
 
       {/* ═══ HERO ═══ */}
